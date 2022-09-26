@@ -1,0 +1,9 @@
+[submodule "xmobar"]
+	path = xmobar
+	url = https://codeberg.org/xmobar/xmobar.git
+[submodule "xmonad"]
+	path = xmonad
+	url = https://github.com/xmonad/xmonad
+[submodule "xmonad-contrib"]
+	path = xmonad-contrib
+	url = https://github.com/xmonad/xmonad-contrib
