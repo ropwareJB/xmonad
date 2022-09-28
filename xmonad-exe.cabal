@@ -6,9 +6,9 @@ cabal-version: 1.12
 
 name:           xmonad-exe
 version:        0.1.0.0
-description:    Please see the README on GitHub at <https://github.com/githubuser/ropsast-java#readme>
-homepage:       https://github.com/montycarlo/xmonad#readme
-bug-reports:    https://github.com/montycarlo/xmonad/issues
+description:    Please see the README on GitHub at <https://github.com/ropwarejb/xmonad#readme>
+homepage:       https://github.com/ropwarejb/xmonad#readme
+bug-reports:    https://github.com/ropwarejb/xmonad/issues
 author:         Josh Brown
 maintainer:     example@example.com
 copyright:      2022 ROPWARE
@@ -17,7 +17,7 @@ build-type:     Simple
 
 source-repository head
   type: git
-  location: https://github.com/montycarlo/xmonad
+  location: https://github.com/ropwarejb/xmonad
 
 library
   other-modules:
