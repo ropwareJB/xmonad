@@ -11,12 +11,18 @@ config =
     , alpha = 200
     , position = Bottom
     , commands =
-        [ Run $ XMonadLog,
-          Run $ Memory ["t", "Mem: <usedratio>%"] 10,
-          Run $ Kbd [],
-          Run $ Date "%a %_d %b %Y <fc=#ee9a00>%H:%M:%S</fc>" "date" 10
+        [ Run $ XMonadLog
+        -- , Run $ Kbd [] -- Not sure if working?
+        , Run $ DiskU [("/", "<fn=1>\xf0c7</fn> hdd <free> free")] [] 60
+        , Run $ Date "<fn=1>\xf073</fn> %Y-%m-%_d <fc=#ee9a00>%H:%M:%S</fc>" "date" 10
+        , Run $ Cpu ["-t", "<fn=1>\xf108</fn> cpu (<total>%)","-H","50","--high","red"] 20
+        , Run $ Memory ["-t", "<fn=1>\xf233</fn> mem <used>M (<usedratio>%)"] 20
+
         ]
-    , template = "%XMonadLog% } <fn=1>\xe61f</fn> weow { %kbd% | %date% | %memory%"
+    , template =
+      " <fn=1>\xe61f</fn> %XMonadLog%"
+      ++ "}{"
+      ++ "%date% | %disku% | %cpu% | %memory% "
     , alignSep = "}{"
     }
 
