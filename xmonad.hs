@@ -22,7 +22,7 @@ main = xmonad
 
 myXmobarPP :: PP
 myXmobarPP = def
-    { ppSep             = magenta " • "
+    { ppSep             = grey " | "
     , ppTitleSanitize   = xmobarStrip
     , ppCurrent         = wrap " " "" . xmobarBorder "Top" "#8be9fd" 2
     , ppHidden          = white . wrap " " ""
@@ -32,8 +32,8 @@ myXmobarPP = def
     , ppExtras          = [logTitles formatFocused formatUnfocused]
     }
   where
-    formatFocused   = wrap (white    "[") (white    "]") . magenta . ppWindow
-    formatUnfocused = wrap (lowWhite "[") (lowWhite "]") . blue    . ppWindow
+    formatFocused   = wrap (white    "[") (white    "]") . focused . ppWindow
+    formatUnfocused = wrap (grey "[") (grey "]") . unfocused . ppWindow
 
     -- | Windows should have *some* title, which should not not exceed a
     -- sane length.
@@ -47,3 +47,8 @@ myXmobarPP = def
     yellow   = xmobarColor "#f1fa8c" ""
     red      = xmobarColor "#ff5555" ""
     lowWhite = xmobarColor "#bbbbbb" ""
+
+    grey    = xmobarColor "#8a8a8a" ""
+    focused = xmobarColor "#ff6038" ""
+    unfocused    = grey
+
