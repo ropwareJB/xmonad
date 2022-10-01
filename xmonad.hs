@@ -27,7 +27,7 @@ main = xmonad
   , layoutHook =
       spacingRaw True (Border 5 0 5 5) True (Border 5 5 5 5) True
       $ myLayoutHook
-  , normalBorderColor  = "#cccccc"
+  , normalBorderColor  = "#555555"
   , focusedBorderColor = c_focused
   }
 
