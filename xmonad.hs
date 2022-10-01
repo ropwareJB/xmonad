@@ -1,10 +1,16 @@
 import XMonad
 
+import XMonad.Layout.Spacing
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
 import XMonad.Util.Loggers
+
+c_focused :: String
+c_focused = "#e80400"
+
+c_focused_window = "#ff6038"
 
 main :: IO ()
 main = xmonad
@@ -18,13 +24,23 @@ main = xmonad
         defToggleStrutsKey
      $ def
   { terminal = "urxvt -e /usr/bin/fish"
+  , layoutHook =
+      spacingRaw True (Border 5 0 5 5) True (Border 5 5 5 5) True
+      $ myLayoutHook
+  , normalBorderColor  = "#cccccc"
+  , focusedBorderColor = c_focused
   }
+
+myLayoutHook =
+  Tall 1 (3/100) (1/2)
+  ||| Mirror (Tall 1 (3/100) (3/5))
+  ||| Full
 
 myXmobarPP :: PP
 myXmobarPP = def
     { ppSep             = grey " | "
     , ppTitleSanitize   = xmobarStrip
-    , ppCurrent         = wrap " " "" . xmobarBorder "Top" "#8be9fd" 2
+    , ppCurrent         = wrap " " "" . xmobarBorder "Bottom" c_focused 2
     , ppHidden          = white . wrap " " ""
     , ppHiddenNoWindows = lowWhite . wrap " " ""
     , ppUrgent          = red . wrap (yellow "!") (yellow "!")
@@ -32,7 +48,7 @@ myXmobarPP = def
     , ppExtras          = [logTitles formatFocused formatUnfocused]
     }
   where
-    formatFocused   = wrap (white    "[") (white    "]") . focused . ppWindow
+    formatFocused   = wrap (white "[") (white "]") . focusedWindow . ppWindow
     formatUnfocused = wrap (grey "[") (grey "]") . unfocused . ppWindow
 
     -- | Windows should have *some* title, which should not not exceed a
@@ -46,9 +62,10 @@ myXmobarPP = def
     white    = xmobarColor "#f8f8f2" ""
     yellow   = xmobarColor "#f1fa8c" ""
     red      = xmobarColor "#ff5555" ""
-    lowWhite = xmobarColor "#bbbbbb" ""
+    lowWhite = xmobarColor "#777777" ""
 
     grey    = xmobarColor "#8a8a8a" ""
-    focused = xmobarColor "#ff6038" ""
-    unfocused    = grey
+    focused = xmobarColor c_focused ""
+    focusedWindow = xmobarColor c_focused_window ""
+    unfocused = grey
 
