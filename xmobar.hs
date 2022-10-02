@@ -14,7 +14,7 @@ config =
         [ Run $ XMonadLog
         -- , Run $ Kbd [] -- Not sure if working?
         , Run $ DiskU [("/", "<fn=1>\xf0c7</fn> hdd <free> free")] [] 60
-        , Run $ Date "<fn=1>\xf073</fn> %Y-%m-%_d %H:%M:%S" "date" 10
+        , Run $ Date "<fn=1>\xf073</fn> %Y-%m-%d %H:%M:%S" "date" 10
         , Run $ Cpu ["-t", "<fn=1>\xf108</fn> cpu (<total>%)","-H","50","--high","red"] 20
         , Run $ Memory ["-t", "<fn=1>\xf233</fn> mem <used>M (<usedratio>%)"] 20
         ]
