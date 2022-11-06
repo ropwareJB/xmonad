@@ -29,4 +29,5 @@ config =
     }
 
 main :: IO ()
-main = xmobar config
+main =
+  xmobar config

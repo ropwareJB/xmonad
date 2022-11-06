@@ -47,7 +47,7 @@ executables:
     - -Wdefault
     - -Wwarn
     - -Wmissing-fields
-    - -with-rtsopts=-N
+    - -with-rtsopts=-N1
     dependencies:
     - xmonad-exe
     - xmobar

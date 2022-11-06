@@ -1,6 +1,6 @@
 cabal-version: 1.12
 
--- This file has been generated from package.yaml by hpack version 0.34.4.
+-- This file has been generated from package.yaml by hpack version 0.35.0.
 --
 -- see: https://github.com/sol/hpack
 
@@ -37,7 +37,7 @@ executable xmobar-exe
       Paths_xmonad_exe
   hs-source-dirs:
       ./
-  ghc-options: -threaded -rtsopts -Wdefault -Wwarn -Wmissing-fields -with-rtsopts=-N
+  ghc-options: -threaded -rtsopts -Wdefault -Wwarn -Wmissing-fields -with-rtsopts=-N1
   build-depends:
       base >=4.7 && <5
     , xmobar
