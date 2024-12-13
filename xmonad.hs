@@ -23,7 +23,7 @@ main = xmonad
         )
         defToggleStrutsKey
      $ def
-  { terminal = "urxvt -e /usr/bin/fish"
+  { terminal = "urxvt"
   , layoutHook =
       spacingRaw True (Border 5 0 5 5) True (Border 5 5 5 5) True
       $ myLayoutHook

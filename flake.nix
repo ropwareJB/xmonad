@@ -22,7 +22,7 @@
         packages.${packageName} =
           haskellPackages.callCabal2nix packageName self rec {
             # Dependency overrides go here
-          };
+          }
 
         packages.default = self.packages.${system}.${packageName};
         defaultPackage = self.packages.${system}.default;
@@ -31,6 +31,7 @@
           buildInputs = with pkgs; [
             haskellPackages.haskell-language-server # you must build it with your ghc to work
             ghcid
+	    gnumake
             cabal-install
           ];
           inputsFrom = map (__getAttr "env") (__attrValues self.packages.${system});
