@@ -37,6 +37,7 @@
             ghcid
             gnumake
             cabal-install
+            stack
           ];
           inputsFrom = map (__getAttr "env") (__attrValues self.packages.${system});
         };
