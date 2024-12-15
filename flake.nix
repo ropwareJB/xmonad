@@ -15,27 +15,36 @@
 
         jailbreakUnbreak = pkg:
           pkgs.haskell.lib.doJailbreak (pkg.overrideAttrs (_: { meta = { }; }));
-
-        packageName = "xmonad";
       in
       {
-        packages.${packageName} =
-          haskellPackages.callCabal2nix packageName self rec {
-            # Dependency overrides go here
-          }
+        packages = {
+          xmonad =
+            haskellPackages.callCabal2nix "xmonad" self rec {
+              # Dependency overrides go here
+            };
+          xmobar =
+            haskellPackages.callCabal2nix "xmobar" self rec {
+              # Dependency overrides go here
+            };
+          default = self.packages.${system}.xmonad;
+        };
 
-        packages.default = self.packages.${system}.${packageName};
-        defaultPackage = self.packages.${system}.default;
+        # defaultPackage = self.packages.${system}.default;
 
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
             haskellPackages.haskell-language-server # you must build it with your ghc to work
             ghcid
-	    gnumake
+            gnumake
             cabal-install
           ];
           inputsFrom = map (__getAttr "env") (__attrValues self.packages.${system});
         };
         devShell = self.devShells.${system}.default;
-      });
+        overlays.default = final: prev: {
+          xmobar-ropware = self.packages.xmobar;
+          xmonad-ropware = self.packages.xmonad;
+        };
+      }
+    );
 }
