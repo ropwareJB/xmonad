@@ -25,7 +25,7 @@ main = xmonad
      $ def
   { terminal = "urxvt"
   , layoutHook =
-      spacingRaw True (Border 5 0 5 5) True (Border 5 5 5 5) True
+      spacingRaw True (Border 2 0 2 2) True (Border 2 2 2 2) True
       $ myLayoutHook
   , normalBorderColor  = "#555555"
   , focusedBorderColor = c_focused

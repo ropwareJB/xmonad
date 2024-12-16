@@ -8,7 +8,7 @@ config =
         [ "xft:DejaVuSansM Nerd Font:style=Book:pixelsize=18"
         ]
     , allDesktops = True
-    , alpha = 200
+    , alpha = 220
     , position = BottomH 28
     , commands =
         [ Run $ XMonadLog
