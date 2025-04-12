@@ -9,7 +9,7 @@ config =
         ]
     , allDesktops = True
     , alpha = 220
-    , position = BottomH 28
+    , position = TopH 28
     , commands =
         [ Run $ XMonadLog
         -- , Run $ Kbd [] -- Not sure if working?
